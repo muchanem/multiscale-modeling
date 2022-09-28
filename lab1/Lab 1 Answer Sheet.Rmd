@@ -1,0 +1,261 @@
+---
+title: "Lab 1 Answer Sheet"
+author: "BIOS 10602 - Multiscale Modeling of Biological Systems"
+date: "9/27/2022"
+output: html_document
+---
+
+## Part 3: R Markdown
+
+3.1
+```{r}
+pi*(3.22E6)
+```
+
+3.2
+```{r}
+pi %% 1.2
+```
+
+## Part 4: Variable Assignment
+
+4.1 a
+<span style="color:blue"> A value </span>
+
+4.1 b
+<span style="color:blue"> An expression would mean it stores a reference to (3-x) instead of the value of that expression computed at creation</span>
+
+4.2
+<span style="color:blue"> Combines all arguments to form a vector all of the same type (with conversion if necessary) </span>
+
+```{r}
+myVec <- c(2, 4, 6, 8, 10, 12, 14, 16, 18, 20)
+myVec
+```
+
+4.3 a
+```{r}
+plusFour <- myVec+4
+```
+
+4.3 b
+<span style="color:blue"> Adds 4 to all the values of myVec </span>
+
+4.4
+```{r}
+print(mean(myVec))
+```
+
+4.5 a
+```{r}
+heartRate <- seq(60,100,5)
+print(heartRate)
+```
+
+4.5 b
+```{r}
+averageEjection <- 70
+ejectionVolumes <- averageEjection * 35 * heartRate
+```
+
+4.6 a
+<span style="color:blue"> Sets the first value in myVec to 3 </span>
+
+4.6 b
+<span style="color:blue"> The vector that is a subset of myVec from indices 2-5, inclusive </span>
+
+4.6 c
+<span style="color:blue"> The vector that is a subset of myVec, only the odd indices </span>
+
+4.6 d
+<span style="color:blue"> Multiplies all values in myVec by 3 </span>
+
+4.6 e
+<span style="color:blue"> Your answer here. </span>
+
+## Part 5: Logical Expressions
+
+5.1
+<span style="color:blue"> 
+taking x as the first argument, and y as the second:
+1. is x not equal to y 
+2. is x equal to y 
+3. is x less than or equal to y
+4. is x greater than or equal to y
+5. is x less than y 
+6. is x greater than y
+</span>
+
+
+5.2
+<span style="color:blue"> "||" is an or operator, if either argument is true, it returns true </span>
+
+5.3
+<span style="color:blue"> 
+(1) T
+(2) T
+(3) T
+(4) F
+(5) F
+(6) T
+(7) T
+(8) F
+(9) T
+(10) T
+(11) F
+(12) F
+ </span>
+
+5.4
+<span style="color:blue"> Indexes vector multiplesOfFive for all that are not divisible by 10 </span>
+
+5.5 a
+<span style="color:blue"> It treats TRUE as 1 and FALSE as 0 </span>
+
+5.5 b
+<span style="color:blue"> It makes it easy to check for non zero values </span>
+
+## Part 6: Control Flow: if, else
+
+6.1
+<span style="color:blue"> 0 is a "falsy" value, so the first block isn't executed, the second one is </span>
+
+6.2 a
+<span style="color:blue"> It checks if carSpeed is greater than speedLimit and prints the "Give ticket" if greater than, and "Do nothing" if equal to</span>
+
+6.2 b
+<span style="color:blue"> The block with the print statement "Give ticket" is executed </span>
+
+6.3
+```{r}
+bodyTemp <- 37.0
+if ((bodyTemp > 37.2) || (bodyTemp < 36.5)) {
+    print("seek medical attention")
+} else {
+    print("do nothing")
+}
+```
+
+6.4
+```{r}
+if ((bodyTemp > 37.2) || (bodyTemp < 36.5)) {
+    print("seek medical attention")
+    if (bodyTemp > 37.2) {
+        print("fever")
+    } else {
+        print("hypothermia")
+    }
+} else {
+    print("do nothing")
+}
+
+```
+
+## Part 7: Control Flow - Loops
+
+7.1 a
+<span style="color:blue"> For every value from 1 through 10 (inclusive) print that value multiplied by 2</span>
+
+7.1 b
+<span style="color:blue"> In the first line of the if statement and changes each iteration </span>
+
+7.1 c
+<span style="color:blue"> it is </span>
+
+7.1 d
+<span style="color:blue"> It does not, i is overwritten </span>
+
+7.2 a
+<span style="color:blue"> If the remainder when divided by 2 is 0 </span>
+
+7.2 b
+```{r}
+for (i in 1:12) {
+    if (i %% 2 == 0) {
+        print(i)
+    }
+    if (i == 7) {
+        print(i)
+    }
+}
+```
+
+7.3
+```{r}
+for (letter in letters) {
+    print(toupper(letter))
+}
+```
+
+7.4 a
+<span style="color:blue"> The value of x only decreases, and starts below 0 </span>
+
+7.4 b
+<span style="color:blue"> Starting at positive 10 </span>
+
+7.5 a
+<span style="color:blue"> It would print 4 over and over because the value of x is never changed </span>
+
+7.5 b
+```{r}
+
+
+
+x <- 2  
+while(x <=  5){  
+    print(x)
+	x <- x+x
+}  
+```
+
+## Part 8: Functions in R
+
+8.1 a
+```{r}
+findCube <- function(n) {
+    return(n**3)
+}
+```
+
+8.1 b
+```{r}
+cubed <- findCube(529)
+```
+
+8.2
+<span style="color:blue"> They are assigned in the order they are put in the function </span>
+
+8.3 a
+```{r}
+calcMean <- function(vec) {
+    return(sum(vec)/length(vec))
+}
+```
+
+8.3 b
+```{r}
+testVec <- seq(3,14,1)
+```
+
+8.3 c
+```{r}
+print(calcMean(testVec) == mean(testVec))
+```
+
+8.4 a
+```{r}
+hpluses <- numeric(14)
+for (pH in seq(1,14,1)) {
+    hpluses[pH] = 1*10^(-pH)
+}
+```
+
+8.4 b
+```{r}
+H_from_pH <- function(pH) {
+    return(1*10^(-pH))
+}
+OH_from_pH <- function(pH) {
+    return(1*10^(-(14-pH)))
+}
+```
